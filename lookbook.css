@@ -137,8 +137,8 @@ html body .hlb h1 em,html body .hlb h2 em{font-family:var(--serif)!important}
 html body .hlb .counter .arrow,html body .hlb .hot,html body .hlb .sizes button,html body .hlb .pop .x{font-family:var(--mono)!important}
 html body .hlb h1,html body .hlb h2{letter-spacing:normal}
 @media(min-width:992px){
-html body #bf-bar{height:32px!important;min-height:0!important}
-html body #site-header{top:32px!important;height:48px!important}
-html body #site-header #header-interior,html body #site-header #header-hide-mb{height:48px!important}
-html body main#content{margin-top:80px!important}
+html body #bf-bar#bf-bar{height:32px!important;min-height:0!important}
+html body #site-header#site-header{top:32px!important;height:48px!important}
+html body #site-header#site-header .header-interior,html body #site-header#site-header .header-bar{height:48px!important}
+html body:not(.index) main#content#content{margin-top:80px!important}
 }
