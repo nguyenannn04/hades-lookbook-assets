@@ -2,16 +2,8 @@
   var host = document.getElementById('hlb'); if (!host) return;
   host.className = 'hlb'; host.style.minHeight = '80vh';
   host.innerHTML = "\n\n<div class=\"panel counter\">\n  <span class=\"lbl\" id=\"hlb-cLbl\">Lookbook</span><span class=\"num grow\" id=\"hlb-cNum\">FW'26 \u00b7 10 looks</span>\n  <button class=\"arrow\" id=\"hlb-prev\" aria-label=\"Look tr\u01b0\u1edbc\">\u2039</button>\n  <button class=\"arrow\" id=\"hlb-next\" aria-label=\"Look sau\">\u203a</button>\n  <div class=\"thumb\" id=\"hlb-cThumb\"></div>\n  <button class=\"arrow mclose\" id=\"hlb-mClose\" aria-label=\"\u0110\u00f3ng look\">\u00d7</button>\n</div>\n\n<section class=\"intro\">\n  <div class=\"lbl\">Lookbook 01 / 01</div>\n  <h1>FW'26 <em>line-up</em></h1>\n  <div class=\"row2\"><span class=\"lbl\">Looks</span><b class=\"num\" style=\"color:var(--ink);font-size:14px\">10</b></div>\n</section>\n\n<div class=\"lineup\" id=\"hlb-lineup\" role=\"list\" aria-label=\"Danh s\u00e1ch look\"></div>\n\n<div class=\"viewer\" id=\"hlb-viewer\" tabindex=\"0\" aria-label=\"K\u00e9o \u0111\u1ec3 xoay 360 \u0111\u1ed9\">\n  <div id=\"hlb-vimg\" role=\"img\"></div>\n  <div class=\"hint\" id=\"hlb-hint\">R\u00ea chu\u1ed9t v\u00e0o ng\u01b0\u1eddi m\u1eabu \u0111\u1ec3 xem chi ti\u1ebft</div>\n</div>\n\n<div class=\"sheet\" id=\"hlb-sheet\">\n  <aside class=\"panel info\" id=\"hlb-info\">\n    <div class=\"lbl\" id=\"hlb-iNo\">Look 01 / 10</div>\n    <h2 id=\"hlb-iName\"></h2>\n    <div class=\"scrub\">\n      <span class=\"lbl\" id=\"hlb-iDeg\">000\u00b0 / 360\u00b0</span>\n      <div class=\"strip\" id=\"hlb-strip\" aria-label=\"K\u00e9o \u0111\u1ec3 xoay 360 \u0111\u1ed9\"><div class=\"box\" id=\"hlb-sbox\"></div></div>\n    </div>\n    <dl class=\"spec\" id=\"hlb-spec\"></dl>\n    <p class=\"desc\" id=\"hlb-iDesc\"></p>\n  </aside>\n\n  <aside class=\"panel buy\" id=\"hlb-buy\">\n    <div class=\"lbl\" style=\"margin-bottom:10px\">Ch\u1ecdn size t\u1eebng m\u00f3n</div>\n    <div id=\"hlb-items\"></div>\n    <div class=\"tot\"><span class=\"lbl\">Tr\u1ecdn b\u1ed9 look</span><strong id=\"hlb-tot\"></strong></div>\n    <button class=\"cta\" id=\"hlb-cta\" disabled>Ch\u1ecdn size cho c\u1ea3 2 m\u00f3n</button>\n\n  </aside>\n</div>\n\n<a class=\"panel pop\" id=\"hlb-pop\" href=\"#\" target=\"_blank\" rel=\"noopener\">\n  <div class=\"ph\"><img id=\"hlb-pImg\" alt=\"\"></div>\n  <div class=\"tx\">\n    <span class=\"num\" id=\"hlb-pNo\">01</span>\n    <span class=\"lbl\" id=\"hlb-pName\"></span>\n    <span class=\"num\" style=\"color:var(--ink)\" id=\"hlb-pPrice\"></span>\n    <span class=\"num\" id=\"hlb-pSize\"></span>\n    <span class=\"go\">Xem trang s\u1ea3n ph\u1ea9m <span>\u2192</span></span>\n  </div>\n  <button class=\"x\" id=\"hlb-pClose\" aria-label=\"\u0110\u00f3ng\">\u00d7</button>\n</a>\n\n<div class=\"panel pbar\" id=\"hlb-pbar\"></div>\n\n<div class=\"panel foot\">\n  <span class=\"lbl\" id=\"hlb-fLbl\">10 looks</span>\n  <button class=\"lbl\" id=\"hlb-fBtn\">Ch\u1ecdn 1 look</button>\n</div>\n\n<div class=\"toast\" id=\"hlb-toast\"></div>\n\n";
-  var link = document.createElement('link'); link.rel = 'stylesheet'; link.href = (document.currentScript && document.currentScript.src || "https://cdn.jsdelivr.net/gh/nguyenannn04/hades-lookbook-assets@main/lookbook-embed.js").replace("lookbook-embed.js", "lookbook.css");
-  link.onload = function(){ host.style.minHeight = ''; init(); };
-  document.head.appendChild(link);
-  function init(){
-  const BASE = 'https://cdn.jsdelivr.net/gh/nguyenannn04/hades-lookbook-assets@028d282/', SP = n => BASE + 'sp/' + n + '.webp';
-  const wrap = document.getElementById('hlb');
-  const fit = () => { const t = wrap.getBoundingClientRect().top + scrollY; wrap.style.height = Math.max(520, innerHeight - t) + 'px'; };
-  fit(); addEventListener('resize', fit);
-  const N = 72, W = 826, H = 1100;
-  const REAL = [
+
+  var FALLBACK = [
  {
   "id": "l1",
   "start": 1,
@@ -478,8 +470,44 @@
   ]
  }
 ];
+  var DATA_URL = 'https://cdn.jsdelivr.net/gh/nguyenannn04/hades-lookbook-assets@main/looks.json';
+  function titleCase(t){ return t.replace(/^HADES\s+/i,'').toLowerCase().replace(/(^|[\s\-\/(])([a-zà-ỹ])/g, function(m,a,b){ return a + b.toUpperCase(); }); }
+  function img(u){ if(!u) return ''; if(u.indexOf('//')===0) u='https:'+u; return u.replace(/(\.(jpe?g|png|webp|gif))(\?.*)?$/i, '_large$1'); }
+  async function product(item){
+    var h = (item.link.match(/\/products\/([^/?#]+)/)||[])[1];
+    var p = await (await fetch('/products/' + h + '.js', {credentials:'same-origin'})).json();
+    var oi = p.options ? p.options.findIndex(function(o){ return /size|kích/i.test(o.name || o); }) : -1;
+    if (oi < 0) oi = (p.options ? p.options.length : 1) - 1;
+    var sizes = p.options && p.options[oi] && p.options[oi].values ? p.options[oi].values : [];
+    var min = Math.min.apply(null, p.variants.map(function(v){ return v.price; }));
+    return { n: titleCase(p.title), p: Math.round(min / 100), img: img(p.featured_image || (p.images||[])[0]), sz: sizes, url: 'https://hades.vn/products/' + h, k: item.loai, ws: item.size_mau_mac };
+  }
+  async function load(){
+    try {
+      var d = await (await fetch(DATA_URL + '?v=' + Math.floor(Date.now()/300000))).json();
+      if (d.thu_muc_anh_360) window.__HLB_SP = d.thu_muc_anh_360;
+      var looks = await Promise.all(d.looks.map(async function(L){
+        return { id: L.id, start: L.khung_hinh_dau || 1, name: String(L.ten_look).replace(/\*([^*]+)\*/, '<em>$1</em>'),
+          model: { h: L.chieu_cao, w: L.can_nang }, desc: L.mo_ta || '',
+          items: await Promise.all(L.san_pham.map(product)), hot: L.diem_cham || [] };
+      }));
+      window.__HLB_REAL = looks;
+    } catch (e) { console.warn('HADES lookbook: dùng dữ liệu dự phòng', e); window.__HLB_REAL = FALLBACK; }
+    var n = window.__HLB_REAL.length;
+    host.innerHTML = host.innerHTML.replace(/10 looks/g, n + ' looks').replace('>10</b>', '>' + n + '</b>');
+  }
+  var link = document.createElement('link'); link.rel = 'stylesheet'; link.href = (document.currentScript && document.currentScript.src || "https://cdn.jsdelivr.net/gh/nguyenannn04/hades-lookbook-assets@main/lookbook-embed.js").replace("lookbook-embed.js", "lookbook.css");
+  link.onload = function(){ load().then(function(){ host.style.minHeight = ''; init(); }); };
+  document.head.appendChild(link);
+  function init(){
+  const SP = n => (window.__HLB_SP || 'https://cdn.jsdelivr.net/gh/nguyenannn04/hades-lookbook-assets@028d282/sp/') + n + '.webp';
+  const wrap = document.getElementById('hlb');
+  const fit = () => { const t = wrap.getBoundingClientRect().top + scrollY; wrap.style.height = Math.max(520, innerHeight - t) + 'px'; };
+  fit(); addEventListener('resize', fit);
+  const N = 72, W = 826, H = 1100;
+  const REAL = window.__HLB_REAL;
   // line-up order
-  const SLOTS = ['l1','l5','l2','l6','l3','l9','l4','l10','l7','l8'];
+  const SLOTS = REAL.map(r => r.id);
   const $ = id => document.getElementById(id);
   const link = it => it.url || 'https://hades.vn/search?q=' + encodeURIComponent(it.n);
   const vnd = n => n.toLocaleString('vi-VN') + '₫';
@@ -539,8 +567,8 @@
   const pad3 = n => String(n).padStart(3,'0');
 
   function renderLook(L, slot) {
-    $('hlb-iNo').textContent = `Look ${pad(slot + 1)} / 10`;
-    $('hlb-cLbl').textContent = 'Look'; $('hlb-cNum').textContent = `${pad(slot + 1)} / 10`;
+    $('hlb-iNo').textContent = `Look ${pad(slot + 1)} / ${pad(REAL.length)}`;
+    $('hlb-cLbl').textContent = 'Look'; $('hlb-cNum').textContent = `${pad(slot + 1)} / ${pad(REAL.length)}`;
     big($('hlb-cThumb'), L.id, 1); $('hlb-cThumb').style.backgroundSize = '400% 300%';
     $('hlb-iName').innerHTML = L.name;
     $('hlb-iDesc').textContent = L.desc;
@@ -638,8 +666,8 @@
     wrap.classList.remove('sel');
     lineup.style.transform = 'none';
     place(fromRect || target());
-    $('hlb-cLbl').textContent = 'Lookbook'; $('hlb-cNum').textContent = "FW'26 · 10 looks"; $('hlb-cThumb').style.backgroundImage = '';
-    $('hlb-fLbl').textContent = '10 looks'; $('hlb-fBtn').textContent = 'Chọn 1 look';
+    $('hlb-cLbl').textContent = 'Lookbook'; $('hlb-cNum').textContent = `FW'26 · ${REAL.length} looks`; $('hlb-cThumb').style.backgroundImage = '';
+    $('hlb-fLbl').textContent = REAL.length + ' looks'; $('hlb-fBtn').textContent = 'Chọn 1 look';
     setTimeout(() => { viewer.classList.remove('show', 'anim'); lineup.children[slot].classList.remove('on'); }, 900);
     cur = null; cancelAnimationFrame(auto);
   }

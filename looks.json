@@ -1,0 +1,297 @@
+{
+  "_huong_dan": "Sửa file này trên github.com (bút chì ✏️), bấm Commit changes, rồi mở link làm mới ở README để web cập nhật ngay.",
+  "thu_muc_anh_360": "https://cdn.jsdelivr.net/gh/nguyenannn04/hades-lookbook-assets@main/sp/",
+  "looks": [
+    {
+      "id": "l1",
+      "ten_look": "Prime *Mirror*",
+      "chieu_cao": "1m78",
+      "can_nang": "65 kg",
+      "mo_ta": "Len lông đen chữ PRIME HADES đảo ngược, phối jeans Salvage wash xanh đậm ống bóng.",
+      "khung_hinh_dau": 1,
+      "san_pham": [
+        {
+          "link": "https://hades.vn/products/hades-mirror-knit-sweater-black",
+          "loai": "Áo",
+          "size_mau_mac": "L"
+        },
+        {
+          "link": "https://hades.vn/products/hades-salvage-denim-pants",
+          "loai": "Quần",
+          "size_mau_mac": "L"
+        }
+      ],
+      "diem_cham": [
+        [
+          50,
+          30
+        ],
+        [
+          50,
+          64
+        ]
+      ]
+    },
+    {
+      "id": "l5",
+      "ten_look": "Wired *Seven*",
+      "chieu_cao": "1m75",
+      "can_nang": "51 kg",
+      "mo_ta": "Áo thun đen chữ Hades Present phía trước, số 7 tai nghe chồng lớp phía sau. Phối jeans Chrome Dust xanh nhạt.",
+      "khung_hinh_dau": 1,
+      "san_pham": [
+        {
+          "link": "https://hades.vn/products/hades-wired-seven-tee",
+          "loai": "Áo",
+          "size_mau_mac": "M"
+        },
+        {
+          "link": "https://hades.vn/products/hades-chrome-dust-jeans",
+          "loai": "Quần",
+          "size_mau_mac": "M"
+        }
+      ],
+      "diem_cham": [
+        [
+          50,
+          32
+        ],
+        [
+          50,
+          64
+        ]
+      ]
+    },
+    {
+      "id": "l2",
+      "ten_look": "Saigon *Cargo*",
+      "chieu_cao": "1m85",
+      "can_nang": "65 kg",
+      "mo_ta": "Áo Campus Classic xanh rêu in HADESLTD SAIGON MM.XVI, phối cargo jeans wash xám bẩn túi hộp lớn.",
+      "khung_hinh_dau": 60,
+      "san_pham": [
+        {
+          "link": "https://hades.vn/products/hades-campus-classic-tee-moss-green",
+          "loai": "Áo",
+          "size_mau_mac": "L"
+        },
+        {
+          "link": "https://hades.vn/products/hades-off-gray-wash-cargo-jeans",
+          "loai": "Quần",
+          "size_mau_mac": "L"
+        }
+      ],
+      "diem_cham": [
+        [
+          50,
+          27
+        ],
+        [
+          50,
+          62
+        ]
+      ]
+    },
+    {
+      "id": "l6",
+      "ten_look": "Camo *Glitz*",
+      "chieu_cao": "1m70",
+      "can_nang": "47 kg",
+      "mo_ta": "Hoodie zip mặc được hai mặt: mặt camo vải waffle và mặt đen in HADES phủ họa tiết ngôi sao.",
+      "khung_hinh_dau": 1,
+      "san_pham": [
+        {
+          "link": "https://hades.vn/products/hades-camo-glitz-zip-up",
+          "loai": "Hoodie",
+          "size_mau_mac": "M"
+        }
+      ],
+      "diem_cham": [
+        [
+          50,
+          36
+        ]
+      ]
+    },
+    {
+      "id": "l3",
+      "ten_look": "Slow *Burn*",
+      "chieu_cao": "1m85",
+      "can_nang": "65 kg",
+      "mo_ta": "Áo dài tay wash xám in ban nhạc SLOWBURN, tay in lửa. Jeans in graffiti HADES phủ kín trước và sau.",
+      "khung_hinh_dau": 10,
+      "san_pham": [
+        {
+          "link": "https://hades.vn/products/hades-slowburn-washed-longsleeve",
+          "loai": "Áo",
+          "size_mau_mac": "L"
+        },
+        {
+          "link": "https://hades.vn/products/hades-graffity-bomb-jeans",
+          "loai": "Quần",
+          "size_mau_mac": "L"
+        }
+      ],
+      "diem_cham": [
+        [
+          50,
+          29
+        ],
+        [
+          50,
+          66
+        ]
+      ]
+    },
+    {
+      "id": "l9",
+      "ten_look": "Axis *Riot*",
+      "chieu_cao": "1m85",
+      "can_nang": "65 kg",
+      "mo_ta": "Áo khoác da Axis loang xám đen dáng lửng, phối jeans Grunge Riot wash bẩn rách lớn hai ống.",
+      "khung_hinh_dau": 1,
+      "san_pham": [
+        {
+          "link": "https://hades.vn/products/hades-alexis-leather-jacket",
+          "loai": "Áo khoác",
+          "size_mau_mac": "L"
+        },
+        {
+          "link": "https://hades.vn/products/hades-grunge-riot-denim-pants",
+          "loai": "Quần",
+          "size_mau_mac": "L"
+        }
+      ],
+      "diem_cham": [
+        [
+          50,
+          30
+        ],
+        [
+          50,
+          62
+        ]
+      ]
+    },
+    {
+      "id": "l4",
+      "ten_look": "Terra *Stripe*",
+      "chieu_cao": "1m85",
+      "can_nang": "65 kg",
+      "mo_ta": "Áo thun sọc navy thêu logo ngực, in HADESLTD SINCE MMXVI sau lưng, phối quần Backspike đen ống bóng.",
+      "khung_hinh_dau": 1,
+      "san_pham": [
+        {
+          "link": "https://hades.vn/products/hades-terra-stripe-tee-blue-navy",
+          "loai": "Áo",
+          "size_mau_mac": "L"
+        },
+        {
+          "link": "https://hades.vn/products/hades-backspike-pants",
+          "loai": "Quần",
+          "size_mau_mac": "L"
+        }
+      ],
+      "diem_cham": [
+        [
+          50,
+          31
+        ],
+        [
+          50,
+          64
+        ]
+      ]
+    },
+    {
+      "id": "l10",
+      "ten_look": "Line *Driver*",
+      "chieu_cao": "1m71",
+      "can_nang": "48 kg",
+      "mo_ta": "Set sọc kim Line Driver: áo khoác lửng thêu Armada Hades và quần ống bóng thêu chữ sau ống.",
+      "khung_hinh_dau": 1,
+      "san_pham": [
+        {
+          "link": "https://hades.vn/products/hades-line-driver-jacket",
+          "loai": "Áo khoác",
+          "size_mau_mac": "M"
+        },
+        {
+          "link": "https://hades.vn/products/hades-line-driver-pants",
+          "loai": "Quần",
+          "size_mau_mac": "S"
+        }
+      ],
+      "diem_cham": [
+        [
+          50,
+          30
+        ],
+        [
+          50,
+          64
+        ]
+      ]
+    },
+    {
+      "id": "l7",
+      "ten_look": "Bubble *Dot*",
+      "chieu_cao": "1m85",
+      "can_nang": "65 kg",
+      "mo_ta": "Hoodie zip trắng chấm bi xanh, chữ Hades thêu bạc. Phối jeans Chrome Dust xanh nhạt ống cong.",
+      "khung_hinh_dau": 1,
+      "san_pham": [
+        {
+          "link": "https://hades.vn/products/hades-bubble-dot-zip-hoodie-white",
+          "loai": "Hoodie",
+          "size_mau_mac": "L"
+        },
+        {
+          "link": "https://hades.vn/products/hades-chrome-dust-jeans",
+          "loai": "Quần",
+          "size_mau_mac": "L"
+        }
+      ],
+      "diem_cham": [
+        [
+          50,
+          30
+        ],
+        [
+          50,
+          64
+        ]
+      ]
+    },
+    {
+      "id": "l8",
+      "ten_look": "Wanna*bees*",
+      "chieu_cao": "1m85",
+      "can_nang": "65 kg",
+      "mo_ta": "Polo dài tay sọc vàng nâu bản to, túi ngực dây rút, HADES LTD thêu sau lưng. Phối jeans Salvage wash đậm.",
+      "khung_hinh_dau": 1,
+      "san_pham": [
+        {
+          "link": "https://hades.vn/products/hades-wannabees-longsleeve-polo",
+          "loai": "Áo",
+          "size_mau_mac": "L"
+        },
+        {
+          "link": "https://hades.vn/products/hades-salvage-denim-pants",
+          "loai": "Quần",
+          "size_mau_mac": "L"
+        }
+      ],
+      "diem_cham": [
+        [
+          50,
+          30
+        ],
+        [
+          50,
+          64
+        ]
+      ]
+    }
+  ]
+}
