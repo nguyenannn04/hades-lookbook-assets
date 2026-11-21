@@ -142,3 +142,4 @@ html body #site-header#site-header{top:32px!important;height:48px!important}
 html body #site-header#site-header .header-interior,html body #site-header#site-header .header-bar{height:48px!important}
 html body:not(.index) main#content#content{margin-top:80px!important}
 }
+html body .hlb .toast.show{pointer-events:auto}
