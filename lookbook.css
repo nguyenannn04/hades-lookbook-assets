@@ -132,3 +132,7 @@
 
 
 @media(max-width:900px){.hlb .hint{display:none}.hlb .intro{top:18px}.hlb .intro h1{margin-bottom:14px}.hlb .lineup{top:140px;bottom:76px;height:auto;padding-top:0;align-items:stretch}.hlb .fig{height:100%;justify-content:flex-end}.hlb .fig .im{height:calc(100% - 26px)}}
+html body .hlb h1,html body .hlb h2,html body .hlb button{font-family:var(--sans)!important}
+html body .hlb h1 em,html body .hlb h2 em{font-family:var(--serif)!important}
+html body .hlb .counter .arrow,html body .hlb .hot,html body .hlb .sizes button,html body .hlb .pop .x{font-family:var(--mono)!important}
+html body .hlb h1,html body .hlb h2{letter-spacing:normal}
