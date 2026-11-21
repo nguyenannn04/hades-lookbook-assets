@@ -9,7 +9,7 @@
       b.href = LINK; b.title = LABEL; b.textContent = LABEL;
       if (location.pathname.indexOf('/pages/lookbook') === 0) n.classList.add('active');
       li.parentNode.insertBefore(n, li);
-      li.style.display = 'none';
+      li.style.setProperty('display', 'none', 'important');
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
